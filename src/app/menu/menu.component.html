@@ -1,0 +1,27 @@
+<nav  class="navbar navbar-expand-sm bg-info navbar-light">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">Gestion Produits</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-
+    toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-
+    controls="navbarNavAltMarkup" aria-expanded="false" aria-
+    label="Toggle navigation">
+    
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav" *ngIf="authServ.isConnected">
+    <a class="nav-link" routerLink="/produits">Produits</a>
+    <a class="nav-link" routerLink="/add-produits" *ngIf="authServ.testerAdmin()">Ajout Produits</a>
+    <span *ngIf="authServ.isConnected">
+        <a class="nav-link" (click)="authServ.disconnect">[{{ authServ.userCourant }}]</a>
+      </span>
+      <span *ngIf="!authServ.isConnected">
+        <a class="nav-link disabled" aria-disabled="true">Utilisateur</a>
+      </span>
+    <a class="nav-link" routerLink="/search-produit" >Recherche Produit</a>
+    <!--<a class="nav-link" routerLink="#">Utilisateur</a>
+    --></div>
+    </div>
+    </div>
+    </nav>

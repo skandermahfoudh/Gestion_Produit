@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Ajouter un Produit</h2>
+    <form >
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Id</label>
+    
+    <input type="number"[(ngModel)]=newProd.id name="id" class="form-
+    control">
+    
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >Nom</label>
+    
+    <input type="text"[(ngModel)]=newProd.nom name="nom" class="form-
+    control">
+    
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Quantité</label>
+    
+    <input type="number"[(ngModel)]=newProd.quantite name="quantite" class="form-
+    control">
+    
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Groupe</label>
+        <select class="form-control form-control-lg" name="idgrp" [(ngModel)]="newId">
+        <option *ngFor="let g of groups" [value]="g.idgrp">{{g.nomGrp}}</option>
+        </select> 
+        </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Description</label>
+    <input type="text" [(ngModel)]=newProd.description name="description"
+    class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Prix</label>
+    
+    <input type="number" [(ngModel)]=newProd.prix name="prix" class="form-
+    control">
+</div><br>
+<div class="mt-8">
+
+<button type="submit" (click)="ajouterProduit()" class="btn btn-success">Ajouter</button>
+
+</div>
+</form>
+</div>

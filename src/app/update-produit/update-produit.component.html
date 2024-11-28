@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+    <h2>Modifier un produit</h2> 
+    </div>
+    <form >
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >id</label>
+            <input readonly type="number" [(ngModel)]=produitCourant.id name="id" class=
+           "form-control">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Nom</label>
+            <input type="text"[(ngModel)]=produitCourant.nom name="nom" class="form-control">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Description</label>
+            <input type="text" [(ngModel)]=produitCourant.description name="description" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label>Groupe</label>
+                <select class="form-control form-control-lg" name="grpid" [(ngModel)]="produitCourant.grp.idgrp" >
+                  <option *ngFor="let g of groups" [value]="g.idgrp">{{g.nomGrp}}</option>
+                </select>
+              </div>
+              
+            <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Quantite</label>
+            <input type="number" [ngModel]=produitCourant.quantite name="quantite" class="form-control">
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Prix</label>
+            <input type="number" [(ngModel)]=produitCourant.prix name="prix" class="form-control">
+            </div>
+            <div class="mt-2">
+            <button type="submit" (click)="modifProduit()" class="btn btn-success">Modifer
+            </button>
+            </div>
+            </form>
+           </div>

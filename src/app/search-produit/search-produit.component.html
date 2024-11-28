@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="card shadow mb-4">
+  <div class="card-body">
+  <h1>Chercher un produit</h1>
+  <form name="f1">
+      Choisir un critère de recherche :
+      <input type="radio" [(ngModel)]="critere" value="nom" name="critaier"> par nom
+      <input type="radio" [(ngModel)]="critere" value="groupe" name="critaier"> par groupe
+      <input type="radio" [(ngModel)]="critere" value="quantite" name="critaier"> par quantite
+      </form><br>
+      <div [ngSwitch]="critere">
+      <form name="f2" class="form-inline">
+      <div class="col-sm-2 col-md-2 col-lg-2" *ngSwitchCase="'nom'">
+      <label>Nom à chercher </label>
+      <input type="text" class="form-control" name="nom" class="form-control" #nomProd (keyup)="chercherParNom(nomProd.value)">
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2" *ngSwitchCase="'groupe'"> Groupe <select class="form-control form-control-lg" name="grpid" [(ngModel)]="grpidRech" (change)="chercherParGrp()">
+      <option value="0">Tous</option>
+      <option *ngFor="let gr of list_grp" value={{gr.idgrp}}>{{gr.nomGrp}}</option>
+      </select>
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2" *ngSwitchCase="'quantite'">
+          <label>Quantité </label>
+          <input type="number" class="form-control" name="quantite" class="form-control" #quantiteProd (keyup)="chercherParQuantite(quantiteProd.value)">
+          </div>
+      </form>
+  </div>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let produit of list_prod">
+            <tr>
+              <td>{{ produit.id }}</td>
+              <td>{{ produit.nom }}</td>
+              <td>{{ produit.description }}</td>
+              <td>{{ produit.quantite }}</td>
+              <td>{{ produit.prix | number:'1.2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

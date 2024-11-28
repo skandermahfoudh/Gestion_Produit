@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <h1>Liste des produits</h1>
+      <table width="100%">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Groupe</th>
+            <th>Quantite</th> 
+            <th>Prix</th>
+            <th *ngIf="authServ.testerAdmin()">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let produit of tab_prod">
+          <tr>
+            <td>{{ produit.id }}</td>
+            <td>{{ produit.nom }}</td>
+            <td>{{ produit.description }}</td>
+            <td>{{ produit.grp.nomGrp }}</td>
+            <td [ngStyle]="{'color':  produit.quantite < 10 ? 'red' : 'black'}">{{produit.quantite}}</td>
+            <td>{{ produit.prix | number:'1.2' }}</td>
+            <td *ngIf="authServ.testerAdmin()">
+              <a class="btn btn-warning" [routerLink]="['/updateProduit',produit.id]"> 
+                <img src="../assets/img/edit.png" height="32" width="32"></a>
+              <a class="btn btn-danger" (click)="suppProduit(produit)">
+              <img src="../assets/img/delete.png" height="32" width="32"></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
